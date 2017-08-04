@@ -1,3 +1,4 @@
+// 能量折线图
 var powerChart = echarts.init(document.getElementById('power'));
 
 var powerOption = {
@@ -39,6 +40,7 @@ var powerOption = {
 
 powerChart.setOption(powerOption);
 
+// 完成率饼图
 var completeRateChart = echarts.init(document.getElementById('complete-rate'));
 
 var completeRateOption = {
@@ -80,6 +82,72 @@ var completeRateOption = {
 
 completeRateChart.setOption(completeRateOption);
 
+// 最佳工作日柱状图
+var bestWorkdayChart = echarts.init(document.getElementById('best-workday'));
+
+var bestWorkdayOption = {
+    tooltip: {
+        trigger: 'axis',
+        formatter: '{c}<br>{b}',
+        extraCssText: 'text-align: center;'
+    },
+    xAxis: {
+        data: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
+        axisTick: {
+            show: false
+        },
+        axisLine: {
+            show: false
+        },
+        axisPointer: {
+            label: {
+                show: true
+            }
+        }
+    },
+    yAxis: {
+        show: false,
+        axisLine: {
+            show: false
+        },
+        axisTick: {
+            show: false
+        }
+    },
+    series: [
+        {
+            type: 'bar',
+            barWidth: 11,
+            itemStyle: {
+                normal: {
+                    barBorderRadius: 6,
+                    color: 'rgba(0,0,0,.05)'
+                }
+            },
+            barGap: '-100%',
+            barCategoryGap: '40%',
+            data: [50, 50, 50, 50, 50, 50, 50],
+            animation: false,
+            tooltip: {
+                show: false
+            }
+        },
+        {
+            type: 'bar',
+            barWidth: 11,
+            itemStyle: {
+                normal: {
+                    barBorderRadius: 6
+                }
+            },
+            data: [0, 50, 50, 15, 20, 0, 0]
+        }
+    ]
+}
+
+bestWorkdayChart.setOption(bestWorkdayOption);
+
+// 已完成任务数柱状图
 var completedTaskChart = echarts.init(document.getElementById('completed-task'));
 
 var completedTaskOption = {
