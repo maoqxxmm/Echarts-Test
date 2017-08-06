@@ -35,7 +35,8 @@ var powerOption = {
                 color: '#e8e8e8'
             }
         }
-    }]
+    }],
+    color: ['#617fde']
 }
 
 powerChart.setOption(powerOption);
@@ -151,7 +152,12 @@ bestWorkdayChart.setOption(bestWorkdayOption);
 var completedTaskChart = echarts.init(document.getElementById('completed-task'));
 
 var completedTaskOption = {
-    tooltip: {},
+    tooltip: {
+        position: function (point, params, dom, rect, size) {
+             // 固定在顶部
+             return [(2 * rect.x + rect.width - size.contentSize[0]) / 2, rect.y - size.contentSize[1] - 10];
+         }
+    },
     xAxis: {
         data: ["7月2日","7月3日","7月4日","7月5日","7月6日","7月7日","7月8日"],
     },
